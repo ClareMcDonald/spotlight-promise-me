@@ -1,21 +1,24 @@
-import { asyncGetQuotes, getQuotes } from "./services/promise-me";
+import {
+  asyncGetQuotes,
+  thenGetQuotes,
+  asyncTryGetQuotes,
+  thenTryGetQuotes,
+  asyncFinallyGetQuotes,
+  thenFinallyGetQuotes,
+  thenAsyncGetQuotes,
+  asyncThenGetQuotes, } from './services/promise-me';
 
 export default function App() {
-  const handleClick = (callback) => {
-    const result = callback();
-    console.log(result);
-  }
-
   return (
     <>
-      <button onClick={() => console.log(asyncGetQuotes())}>
+      <button onClick={async () => console.log(await asyncGetQuotes())}>
         Async Get Quotes
       </button>
       <button onClick={() => console.log(getQuotes())}>
         Get Quotes
       </button>
       <button onClick={async () => console.log(await thenGetQuotes())}>
-        .then() Get Quotes
+        thenGetQuotes
       </button>
       <button onClick={async () => console.log(await asyncTryGetQuotes())}>
         asyncTryGetQuotes
