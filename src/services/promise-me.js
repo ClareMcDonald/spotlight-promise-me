@@ -63,7 +63,10 @@ export function thenTryGetQuotes() {
     const result = fetch('https://futuramaapi.herokuapp.com/api/quotes/1')
         .then((res) => res.json())
         .then((result) => ({ quote: result[0], totalResults: result.length }))
-        .then(() => console.log('2. .then fetch complete'))
+        .then((result) => {
+            console.log('2. .then fetch complete')
+            return result
+        })
         .catch((error) => console.error('Oops! An errror occured.'));
     
     console.log('3. After .then fetch');
